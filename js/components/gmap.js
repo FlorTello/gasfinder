@@ -1,4 +1,5 @@
 const ShowMap = (station) =>{
+  var distance;
   const map = new GMaps({
     div: '#map',
     lat: -12.043333,
@@ -29,6 +30,14 @@ const ShowMap = (station) =>{
         title: station.name +"\n"+ station.address,
         click: function(e) {
           alert('stations');
+        }
+      });
+      map.getRoutes({
+        origin: [position.coords.latitude, position.coords.longitude],
+        destination: [station.lat, station.long],
+        callback: function(result,status){
+             distance = result[0].legs[0].distance.text;
+             $('#distancia').before($(`<p class = "right">${distance}</p>`));
         }
       });
     },

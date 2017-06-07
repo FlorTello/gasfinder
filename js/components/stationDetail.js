@@ -34,7 +34,7 @@ const stationsProducts = (station) => {
   const row = $('<div class="row"></div>');
   const col = $('<div class="col s12 m6 l12">');
   const name = $(`<h5>${station.name}</h5>`);
-  const distancia = $(`<p class = "right">34km</p>`);
+  const distancia = $(`<div id ="distancia" class = "right"></div>`);
   const products = $('<div class="products"></div>');
   station.products.forEach(e=>{
     products.append("<a class='btn-floating btn-large waves-effect waves-light red'>"+e+"</a>");
