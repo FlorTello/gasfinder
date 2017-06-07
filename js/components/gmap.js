@@ -37,7 +37,7 @@ const ShowMap = (station) =>{
         destination: [station.lat, station.long],
         callback: function(result,status){
              distance = result[0].legs[0].distance.text;
-             $('#distancia').before($(`<p class = "right">${distance}</p>`));
+             $('#distancia').after($(`<p class = "right">${distance}</p>`));
         }
       });
     },

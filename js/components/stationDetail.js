@@ -14,27 +14,24 @@ const stationsItem = (station,update) => {
   col.append(card);
   row.append(col);
 
-  district.on('click',(e) => {
-    console.log($('#result'));
+  row.on('click',(e) => {
     e.preventDefault();
-    console.log($(e.currentTarget).html());
-    state.selectedStation = filterByDistrict(state.stations,$(e.currentTarget).html())[0];
-    console.log(state.selectedStation[0]);
+    state.selectedStation = station;
+    console.log(station);
     $('#result').empty();
-    console.log(state.selectedStation);
     ShowMap(state.selectedStation);
+    // reRender($('#detalle'),$('#result'),$('#detalle'));
     $('#detalle').append(stationsProducts(state.selectedStation));
   })
   return row;
 };
 
 const stationsProducts = (station) => {
-  console.log(station);
   const container = $('<div class="container"></div>');
   const row = $('<div class="row"></div>');
   const col = $('<div class="col s12 m6 l12">');
   const name = $(`<h5>${station.name}</h5>`);
-  const distancia = $(`<div id ="distancia" class = "right"></div>`);
+  const distancia = $(`<span id ="distancia" class = "right"></span>`);
   const products = $('<div class="products"></div>');
   station.products.forEach(e=>{
     products.append("<a class='btn-floating btn-large waves-effect waves-light red'>"+e+"</a>");
