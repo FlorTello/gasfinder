@@ -1,3 +1,6 @@
+body{
+  background-color: #eee;
+  }
 * {
   margin:0px;
   padding:0px;
@@ -24,4 +27,12 @@ div#map{
   /*min-width: 400px;*/
   /*max-width: 1024px;*/
   height: 50vh;
+}
+#detalle{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+#detalle *{
+  margin: 5px;
 }

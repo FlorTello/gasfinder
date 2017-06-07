@@ -3,23 +3,27 @@
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
+  const result = $('<div id="result"></div>');
+  const map = $('<div id="map"></div>');
+  const detalle = $('<div id="detalle"></div>');
   const container = Header();
   container.append(Search());
   wrapper.append(container);
+  wrapper.append(result);
+  wrapper.append(map);
+  wrapper.append(detalle);
   root.append(wrapper);
+
 }
 
-// const reRender = (todoList, completedList) => {
-//   todoList.empty();
-//   completedList.empty();
-//   state.stations.forEach(todo=>{
-//     if(!todo.completed){
-//       todoList.append(TodoItem(todo, _ => {reRender(todoList,completedList); }));
-//     }else {
-//       completedList.append(TodoItem(todo, _ => { reRender(todoList, completedList);}));
-//     }
-//   });
-// };
+const reRender = (station, result,update) => {
+  update.empty();
+  result.empty();
+  station.forEach((e) => {
+    result.append(stationsItem(e, _ =>{reRender(station, result , update); }));
+  });
+
+}
 
 var  state = {
   stations: null,
@@ -32,13 +36,6 @@ $( _ => {
     state.stations = json;
     const root = $('.root');
     render(root);
-
-    // $('input').on('keyup',(e)=>{
-    //   const selected = filterByDistrict(state.stations,$(e.target).val());
-    //   state.selectedStation = selected;
-    //   // console.log(selected);
-    //   $('.resul').append(Details());
-    // });
   });
 
 
